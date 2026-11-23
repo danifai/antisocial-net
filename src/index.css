@@ -1,0 +1,484 @@
+/* Tema oscuro (único): base de Bootstrap 5.3 con data-bs-theme="dark" (ver index.html)
+   + paleta del logo. Regla 60-30-10: fondo 60%, tarjetas y textos 30%, verde 10% (solo acciones). */
+:root {
+  --as-bg: #0e1b2a;
+  --as-surface: #182f49;
+  --as-border: #27415f; /* divisores: no alcanza para campos de formulario */
+  --as-input-border: #4b6a8c;
+  --as-primary: #47a88b;
+  --as-primary-hover: #5bc0a1;
+  --as-on-primary: #0e1b2a; /* el texto blanco sobre el verde no llega a 3:1 */
+  --as-ink: #f1f5f9;
+  --as-muted: #94a3b8;
+  --as-tag-text: #cbd5e1;
+  --as-danger: #e06c75;
+  --as-warning: #e5b567;
+}
+
+[data-bs-theme='dark'] {
+  --bs-body-font-family: 'Nunito', system-ui, sans-serif;
+  --bs-body-bg: var(--as-bg);
+  --bs-body-bg-rgb: 14, 27, 42;
+  --bs-body-color: var(--as-ink);
+  --bs-body-color-rgb: 241, 245, 249;
+  --bs-secondary-color: var(--as-muted);
+  --bs-secondary: var(--as-muted);
+  --bs-secondary-rgb: 148, 163, 184; /* .text-secondary */
+  --bs-border-color: var(--as-border);
+  --bs-border-radius: 0.75rem;
+
+  --bs-primary: var(--as-primary);
+  --bs-primary-rgb: 71, 168, 139;
+  --bs-link-color: var(--as-primary);
+  --bs-link-color-rgb: 71, 168, 139;
+  --bs-link-hover-color: var(--as-primary-hover);
+  --bs-link-hover-color-rgb: 91, 192, 161;
+  --bs-code-color: var(--as-primary-hover);
+
+  /* Estados: versiones desaturadas para que no choquen con el logo */
+  --bs-danger-text-emphasis: var(--as-danger);
+  --bs-danger-bg-subtle: rgba(224, 108, 117, 0.12);
+  --bs-danger-border-subtle: rgba(224, 108, 117, 0.4);
+  --bs-form-invalid-color: var(--as-danger);
+  --bs-form-invalid-border-color: var(--as-danger);
+  --bs-warning-text-emphasis: var(--as-warning);
+  --bs-warning-bg-subtle: rgba(229, 181, 103, 0.12);
+  --bs-warning-border-subtle: rgba(229, 181, 103, 0.4);
+  --bs-success-text-emphasis: var(--as-primary-hover);
+  --bs-success-bg-subtle: rgba(71, 168, 139, 0.14);
+  --bs-success-border-subtle: rgba(71, 168, 139, 0.4);
+  --bs-info-text-emphasis: var(--as-ink);
+  --bs-info-bg-subtle: rgba(148, 163, 184, 0.12);
+  --bs-info-border-subtle: rgba(148, 163, 184, 0.35);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+}
+
+/* Botones: texto azul oscuro sobre verde (contraste ~6:1) */
+.btn-primary {
+  --bs-btn-color: var(--as-on-primary);
+  --bs-btn-bg: var(--as-primary);
+  --bs-btn-border-color: var(--as-primary);
+  --bs-btn-hover-color: var(--as-on-primary);
+  --bs-btn-hover-bg: var(--as-primary-hover);
+  --bs-btn-hover-border-color: var(--as-primary-hover);
+  --bs-btn-active-color: var(--as-on-primary);
+  --bs-btn-active-bg: var(--as-primary-hover);
+  --bs-btn-active-border-color: var(--as-primary-hover);
+  --bs-btn-disabled-color: var(--as-on-primary);
+  --bs-btn-disabled-bg: var(--as-primary);
+  --bs-btn-disabled-border-color: var(--as-primary);
+  --bs-btn-focus-shadow-rgb: 71, 168, 139;
+  font-weight: 600;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--as-primary);
+  --bs-btn-border-color: var(--as-primary);
+  --bs-btn-hover-color: var(--as-on-primary);
+  --bs-btn-hover-bg: var(--as-primary);
+  --bs-btn-hover-border-color: var(--as-primary);
+  --bs-btn-active-color: var(--as-on-primary);
+  --bs-btn-active-bg: var(--as-primary-hover);
+  --bs-btn-active-border-color: var(--as-primary-hover);
+  --bs-btn-focus-shadow-rgb: 71, 168, 139;
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: var(--as-muted);
+  --bs-btn-border-color: var(--as-input-border);
+  --bs-btn-hover-color: var(--as-ink);
+  --bs-btn-hover-bg: var(--as-border);
+  --bs-btn-hover-border-color: var(--as-input-border);
+  --bs-btn-active-color: var(--as-ink);
+  --bs-btn-active-bg: var(--as-border);
+  --bs-btn-active-border-color: var(--as-input-border);
+}
+
+/* Formularios: campo más oscuro que la tarjeta, borde claro (≥3:1) y foco verde */
+.form-control {
+  border-color: var(--as-input-border);
+}
+
+.form-control:focus,
+.form-check-input:focus {
+  border-color: var(--as-primary);
+  box-shadow: 0 0 0 0.25rem rgba(71, 168, 139, 0.25);
+}
+
+.form-check-input {
+  border-color: var(--as-input-border);
+}
+
+.form-check-input:checked {
+  background-color: var(--as-primary);
+  border-color: var(--as-primary);
+}
+
+/* Layout */
+.app-navbar {
+  background-color: var(--as-surface);
+  border-bottom: 1px solid var(--as-border);
+}
+
+.app-navbar .nav-link.active {
+  font-weight: 800;
+  color: var(--as-ink);
+}
+
+.app-footer {
+  background-color: var(--as-surface);
+  border-top: 1px solid var(--as-border);
+}
+
+.footer-logo {
+  height: 40px;
+}
+
+/* Logo: tortuga + "anti-" liviano en verde + "social" en negrita */
+.brand {
+  --bs-navbar-brand-color: var(--as-ink);
+  --bs-navbar-brand-hover-color: var(--as-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+
+.brand-icon {
+  height: 34px;
+  width: auto;
+}
+
+.brand-anti {
+  color: var(--as-primary);
+  font-weight: 300;
+}
+
+.brand-social {
+  font-weight: 800;
+}
+
+/* Portada (visitantes): ~60% app / ~40% login en desktop; en mobile: carrusel arriba, login abajo */
+.landing {
+  display: grid;
+  gap: 1.5rem 3rem;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .landing {
+    grid-template-columns: 7fr 5fr;
+  }
+
+  .landing-hero,
+  .landing-posts {
+    grid-column: 1;
+  }
+
+  .landing-login {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+.landing-hero {
+  padding-block: 1rem;
+}
+
+/* Carrusel de la portada: alto parejo entre slides para que no "salte" */
+.landing-slide {
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-slide-slogan {
+  justify-content: center;
+}
+
+.landing-slide .post-card {
+  margin-bottom: 0 !important;
+}
+
+.landing-carousel .carousel-item {
+  padding: 0.25rem 0 3rem; /* lugar para los puntos indicadores */
+}
+
+.landing-carousel .carousel-indicators [data-bs-target] {
+  background-color: var(--as-primary);
+}
+
+@media (min-width: 992px) {
+  .landing-carousel .carousel-item {
+    padding-inline: 3.5rem; /* lugar para las flechas */
+  }
+
+  .landing-carousel .carousel-control-prev,
+  .landing-carousel .carousel-control-next {
+    width: 3rem;
+  }
+}
+
+/* Flechas: Bootstrap las oscurece en tema dark y se pierden; círculo claro con flecha clara */
+.landing-carousel .carousel-control-prev,
+.landing-carousel .carousel-control-next {
+  opacity: 1;
+}
+
+/* anula el invert() que Bootstrap aplica a los controles en tema dark */
+[data-bs-theme='dark'] .landing-carousel .carousel-control-prev,
+[data-bs-theme='dark'] .landing-carousel .carousel-control-next {
+  filter: none;
+}
+
+.landing-carousel .carousel-control-prev-icon,
+.landing-carousel .carousel-control-next-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: 45%;
+  background-color: var(--as-input-border);
+  border: 1px solid var(--as-muted);
+  border-radius: 50%;
+  transition: background-color 0.15s ease;
+}
+
+.landing-carousel .carousel-control-prev:hover .carousel-control-prev-icon,
+.landing-carousel .carousel-control-next:hover .carousel-control-next-icon {
+  background-color: var(--as-primary);
+}
+
+/* Menú de usuario y modal sobre la superficie del tema */
+.app-navbar .dropdown-menu,
+.modal {
+  --bs-dropdown-bg: var(--as-surface);
+  --bs-dropdown-border-color: var(--as-border);
+  --bs-dropdown-link-hover-bg: var(--as-border);
+  --bs-modal-bg: var(--as-surface);
+  --bs-modal-border-color: var(--as-border);
+  --bs-modal-header-border-color: var(--as-border);
+  --bs-modal-footer-border-color: var(--as-border);
+}
+
+/* Tarjetas: superficie azul con borde sutil (la sombra no se ve sobre fondo oscuro) */
+.card {
+  --bs-card-bg: var(--as-surface);
+  --bs-card-border-color: var(--as-border);
+}
+
+.auth-card {
+  max-width: 440px;
+}
+
+.post-card {
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--as-input-border);
+}
+
+.post-text {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-footer {
+  border-top: 1px solid var(--as-border);
+}
+
+.comments-link {
+  color: var(--as-muted);
+  text-decoration: none;
+}
+
+.comments-link:hover {
+  color: var(--as-primary);
+  text-decoration: underline;
+}
+
+/* Botón flotante "escribir algo" (abajo a la derecha) */
+.fab-write {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1030;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: var(--as-on-primary);
+  background-color: var(--as-primary);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.fab-write.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.fab-write:hover {
+  color: var(--as-on-primary);
+  background-color: var(--as-primary-hover);
+}
+
+/* Avatar: círculo con inicial */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-weight: 800;
+  color: var(--as-ink);
+  border: 1px solid var(--as-input-border);
+}
+
+/* Galería de imágenes: alto fijo, 1 / 2 / 3-4 fotos */
+.post-media {
+  display: grid;
+  gap: 0.5rem;
+  height: 220px;
+}
+
+.post-media-large {
+  height: 360px;
+}
+
+.post-media-1 {
+  grid-template-columns: 1fr;
+}
+
+.post-media-2,
+.post-media-3,
+.post-media-4 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.post-media-3,
+.post-media-4 {
+  grid-template-rows: 1fr 1fr;
+}
+
+.post-media-3 .post-media-item:first-child {
+  grid-row: span 2;
+}
+
+.post-media-item {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--bs-border-radius);
+  background-color: var(--as-border);
+}
+
+.post-media-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-media-more {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(14, 27, 42, 0.65);
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+/* Etiquetas: azules; en verde solo cuando son un filtro activo */
+.tag-chip {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background-color: var(--as-border);
+  color: var(--as-tag-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+button.tag-chip {
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+button.tag-chip:hover {
+  border-color: var(--as-input-border);
+  color: var(--as-ink);
+}
+
+.tag-chip.active {
+  background-color: rgba(71, 168, 139, 0.15);
+  border-color: var(--as-primary);
+  color: var(--as-primary-hover);
+}
+
+/* Feed */
+.tag-filter {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto; /* mobile: una sola fila deslizable */
+  padding-bottom: 0.25rem;
+}
+
+@media (min-width: 992px) {
+  .tag-filter {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .feed-sidebar {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+/* Detalle de post */
+.post-detail {
+  max-width: 760px;
+}
+
+.post-description {
+  font-size: 1.1rem;
+}
+
+.comment-bubble {
+  padding: 0.75rem 1rem;
+  background-color: var(--as-surface);
+  border: 1px solid var(--as-border);
+  border-radius: var(--bs-border-radius);
+}
