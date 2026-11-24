@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Alert, Button, Modal, Card } from 'react-bootstrap'
+import { Alert, Button, Card } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import LogoutModal from '../components/auth/LogoutModal'
 import LoadingSpinner from '../components/common/LoadingSpinner'
 import PostCard from '../components/common/PostCard'
 import { useAuth } from '../context/AuthContext'
@@ -74,27 +75,11 @@ export default function Profile() {
           posts.map((post) => <PostCard key={post.id} post={post} variant="perfil" />)}
       </section>
 
-      <Modal
+      <LogoutModal
         show={confirmingLogout}
         onHide={() => setConfirmingLogout(false)}
-        centered
-        size="sm"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title as="h2" className="h5">
-            Cerrar sesión
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>¿Seguro que querés cerrar sesión?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="outline-secondary" onClick={() => setConfirmingLogout(false)}>
-            Cancelar
-          </Button>
-          <Button variant="primary" onClick={handleLogout}>
-            Cerrar sesión
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        onConfirm={handleLogout}
+      />
     </>
   )
 }
