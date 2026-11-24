@@ -246,7 +246,7 @@ export default function NewPost() {
               </Alert>
             ) : (
               <div className="d-flex justify-content-end gap-2">
-                <Link to="/perfil" className="btn btn-outline-secondary">
+                <Link to="/" className="btn btn-outline-secondary">
                   Cancelar
                 </Link>
                 <Button type="submit" disabled={submitting}>
