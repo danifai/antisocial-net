@@ -13,6 +13,12 @@
   --as-tag-text: #cbd5e1;
   --as-danger: #e06c75;
   --as-warning: #e5b567;
+  --as-avatar-blue: hsl(208 40% 29%);
+  --as-avatar-cyan: hsl(185 38% 27%);
+  --as-avatar-purple: hsl(270 32% 29%);
+  --as-avatar-rose: hsl(338 36% 29%);
+  --as-avatar-red: hsl(7 42% 28%);
+  --as-avatar-ochre: hsl(43 42% 27%);
 }
 
 [data-bs-theme='dark'] {
