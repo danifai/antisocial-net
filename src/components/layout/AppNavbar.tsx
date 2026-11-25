@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Button, Container, Modal, Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
+import LogoutModal from '../auth/LogoutModal'
 import { useAuth } from '../../context/AuthContext'
 import Brand from './Brand'
 
@@ -50,27 +51,11 @@ export default function AppNavbar() {
         </Container>
       </Navbar>
 
-      <Modal
+      <LogoutModal
         show={confirmingLogout}
         onHide={() => setConfirmingLogout(false)}
-        centered
-        size="sm"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title as="h2" className="h5">
-            Cerrar sesión
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>¿Seguro que querés cerrar sesión?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="outline-secondary" onClick={() => setConfirmingLogout(false)}>
-            Cancelar
-          </Button>
-          <Button variant="primary" onClick={handleLogout}>
-            Cerrar sesión
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        onConfirm={handleLogout}
+      />
     </>
   )
 }
