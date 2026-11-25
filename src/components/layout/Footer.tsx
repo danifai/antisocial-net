@@ -3,7 +3,7 @@ import logo from '../../assets/logo-tortuga.png'
 
 export default function Footer() {
   return (
-    <footer className="app-footer py-4 mt-auto">
+    <footer className="app-footer d-none d-lg-block py-4 mt-auto">
       <Container className="text-center small">
         <img src={logo} alt="" className="footer-logo mb-2" />
         <p className="mb-1 fw-semibold">UnaHur Anti-Social Net</p>

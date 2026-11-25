@@ -102,7 +102,7 @@ function PostDetailView({ postId }: { postId: number }) {
 
   return (
     <div className="post-detail mx-auto">
-      <Link to="/" className="d-inline-block mb-3 small">
+      <Link to="/" className="btn btn-outline-primary btn-sm mb-3">
         <i className="bi bi-arrow-left me-1" />
         Volver
       </Link>
