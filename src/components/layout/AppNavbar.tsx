@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Button, Container, Modal, Nav, NavDropdown, Navbar } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import LogoutModal from '../auth/LogoutModal'
 import { useAuth } from '../../context/AuthContext'
 import Brand from './Brand'
 
@@ -18,11 +19,25 @@ export default function AppNavbar() {
   // El logo lleva al inicio. Sin sesión el login y el registro están en la portada: solo se ve el logo.
   return (
     <>
-      <Navbar className="app-navbar">
+      <Navbar className="app-navbar sticky-top">
         <Container>
-          <Navbar.Brand as={Link} to="/" className="brand">
-            <Brand />
-          </Navbar.Brand>
+          <div className="d-flex align-items-center">
+            <Navbar.Brand as={Link} to="/" className="brand">
+              <Brand />
+            </Navbar.Brand>
+
+            {/* Solo desktop: en mobile/tablet este botón vive en la barra inferior. */}
+            <NavLink
+              to="/"
+              end
+              className="nav-home d-none d-lg-flex"
+              onClick={() => window.scrollTo(0, 0)}
+              aria-label={user ? 'Feed' : 'Inicio'}
+              title={user ? 'Feed' : 'Inicio'}
+            >
+              <i className="bi bi-house-door" />
+            </NavLink>
+          </div>
 
           {user && (
             <Nav>
@@ -50,27 +65,11 @@ export default function AppNavbar() {
         </Container>
       </Navbar>
 
-      <Modal
+      <LogoutModal
         show={confirmingLogout}
         onHide={() => setConfirmingLogout(false)}
-        centered
-        size="sm"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title as="h2" className="h5">
-            Cerrar sesión
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>¿Seguro que querés cerrar sesión?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="outline-secondary" onClick={() => setConfirmingLogout(false)}>
-            Cancelar
-          </Button>
-          <Button variant="primary" onClick={handleLogout}>
-            Cerrar sesión
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        onConfirm={handleLogout}
+      />
     </>
   )
 }

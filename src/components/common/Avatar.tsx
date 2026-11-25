@@ -3,9 +3,22 @@ interface AvatarProps {
   size?: number
 }
 
-/** Círculo con la inicial; el tono sale del nickName, siempre apagado para no romper el tema. */
+const AVATAR_COLORS = [
+  'var(--as-avatar-blue)',
+  'var(--as-avatar-cyan)',
+  'var(--as-avatar-purple)',
+  'var(--as-avatar-rose)',
+  'var(--as-avatar-red)',
+  'var(--as-avatar-ochre)',
+]
+
+/** Círculo con la inicial y un color estable elegido de la paleta del tema. */
 export default function Avatar({ nickName, size = 40 }: AvatarProps) {
-  const hue = [...nickName].reduce((acc, c) => (acc * 31 + c.charCodeAt(0)) % 360, 7)
+  const hash = [...nickName].reduce(
+    (acc, char) => (Math.imul(acc, 31) + char.charCodeAt(0)) >>> 0,
+    7,
+  )
+  const colorIndex = hash % AVATAR_COLORS.length
 
   return (
     <span
@@ -14,7 +27,7 @@ export default function Avatar({ nickName, size = 40 }: AvatarProps) {
         width: size,
         height: size,
         fontSize: size * 0.42,
-        backgroundColor: `hsl(${hue} 35% 30%)`,
+        backgroundColor: AVATAR_COLORS[colorIndex],
       }}
       aria-hidden="true"
     >

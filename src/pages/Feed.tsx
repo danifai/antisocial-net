@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Alert, Button, Card, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import AboutContent from '../components/common/AboutContent'
 import LoadingSpinner from '../components/common/LoadingSpinner'
 import PostCard from '../components/common/PostCard'
 import TagChip from '../components/common/TagChip'
@@ -116,6 +117,13 @@ export default function Feed() {
               </Button>
             </div>
           )}
+
+          {filtered.length > 0 && filtered.length <= visible && (
+            <p className="text-center text-secondary mt-4 mb-5 mb-lg-0">
+              <i className="bi bi-check2-circle me-1" />
+              No hay más publicaciones nuevas.
+            </p>
+          )}
         </Col>
 
         <Col lg={4} className="order-1 order-lg-2">
@@ -123,14 +131,7 @@ export default function Feed() {
             <Card className="mb-3 d-none d-lg-block">
               <Card.Body>
                 <h2 className="h6 text-uppercase text-secondary mb-3">Sobre nosotros</h2>
-                <p className="small mb-2">
-                  Una red para quienes prefieren escribir antes que hablar. Acá no hay likes
-                  ni seguidores: solo posts, y comentarios cuando tengas ganas.
-                </p>
-                <p className="small text-secondary mb-0">
-                  Dato curioso: una tortuga puede pasar horas dentro de su caparazón y nadie
-                  se lo reprocha.
-                </p>
+                <AboutContent />
               </Card.Body>
             </Card>
 

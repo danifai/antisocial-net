@@ -1,6 +1,7 @@
 import { Container } from 'react-bootstrap'
 import { Route, Routes } from 'react-router-dom'
 import AppNavbar from './components/layout/AppNavbar'
+import BottomNav from './components/layout/BottomNav'
 import Footer from './components/layout/Footer'
 import ProtectedRoute from './components/layout/ProtectedRoute'
 import Home from './pages/Home'
@@ -14,7 +15,7 @@ export default function App() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <AppNavbar />
-      <main className="py-4">
+      <main className="app-main py-4">
         <Container>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -29,6 +30,7 @@ export default function App() {
         </Container>
       </main>
       <Footer />
+      <BottomNav />
     </div>
   )
 }
